@@ -31,7 +31,7 @@
 	//add user to table 
 	$salt =  "\$5\$rounds=1000\$" . "batcomputer" . $username . "\$";
 	$hash = crypt($password, $salt);
-	mysqli_query($con, "INSERT INTO ratings ( `username`, `hash`, `salt`, `ratings`) VALUES ('" .$username ."', '" .$hash ."', '" .$salt ."', " .json_encode($json)) .";") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO ratings ( `username`, `hash`, `salt`, `ratings`) VALUES ('" .$username ."', '" .$hash ."', '" .$salt ."', '". json_encode($json) ."');") or die(mysqli_error($con));
 	echo("0");
 
 
