@@ -30,6 +30,6 @@
 		exit();
 	}
 
-	echo "0\t" . json_encode($existinginfo['ratings'], , JSON_HEX_QUOT);
+	echo "0\t" . json_encode($existinginfo['ratings'], JSON_HEX_QUOT);
 
 ?>
