@@ -19,11 +19,19 @@
 		echo "3: Username already exists";
 		exit();
 	}
-
+	$json = array(
+		'num_ratings' => 0,
+		'total_rating' => 0,
+		'avg_rating' => 0,
+		'likes' => "", 
+		'dislikes' => "",
+		'dislikes_exp' => "",
+		'bugs' => "",
+		'comments' => "");
 	//add user to table 
 	$salt =  "\$5\$rounds=1000\$" . "batcomputer" . $username . "\$";
 	$hash = crypt($password, $salt);
-	mysqli_query($con, "INSERT INTO players ( `username`, `hash`, `salt`) VALUES ('" .$username ."', '" .$hash ."', '" .$salt ."');") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO ratings ( `username`, `hash`, `salt`, `ratings`) VALUES ('" .$username ."', '" .$hash ."', '" .$salt ."', " .json_encode($json)) .";") or die(mysqli_error($con));
 	echo("0");
 
 
