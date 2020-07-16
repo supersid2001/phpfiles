@@ -17,7 +17,7 @@
 		'dislikes_exp' => $existinginfo['dislikes_exp'],
 		'bugs' => $existinginfo['bugs'],
 		'comments' => $existinginfo['comments']);
-	$json = json_decode($string);
+	$json = json_decode($string) or die (mysqli_error($con));
 	$namecheckquery = "SELECT username FROM ratings WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query failed");
 	if(mysqli_num_rows($namecheck != 1))
