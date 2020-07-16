@@ -10,7 +10,7 @@
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 
-	$namecheckquery = "SELECT username, salt, hash, ratings FROM ratings WHERE username = '" .  $username . "'; ";
+	$namecheckquery = "SELECT username, salt, hash, num_ratings, total_rating, avg_rating, likes, dislikes, dislikes_exp, bugs, comments FROM ratings WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2 : Namecheck failed");//error code 2 namecheck failed
 	if(mysqli_num_rows($namecheck != 1))
 	{
@@ -29,7 +29,17 @@
 		echo "6: Invalid credentials";
 		exit();
 	}
+	$json = array(
+		'num_ratings' => $existinginfo['num_ratings'],
+		'total_rating' => $existinginfo['total_rating'],
+		'avg_rating' => $existinginfo['avg_rating'],
+		'likes' => $existinginfo['likes'], 
+		'dislikes' => $existinginfo['dislikes'],
+		'dislikes_exp' => $existinginfo['dislikes_exp']
+		'bugs' => $existinginfo['bugs']
+		'comments' => $existinginfo['comments']);
 
-	echo "0\t" . json_encode($existinginfo['ratings'], JSON_HEX_QUOT);
+
+	echo "0\t" . json_encode($json);
 
 ?>
