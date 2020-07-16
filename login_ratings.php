@@ -35,8 +35,8 @@
 		'avg_rating' => $existinginfo['avg_rating'],
 		'likes' => $existinginfo['likes'], 
 		'dislikes' => $existinginfo['dislikes'],
-		'dislikes_exp' => $existinginfo['dislikes_exp']
-		'bugs' => $existinginfo['bugs']
+		'dislikes_exp' => $existinginfo['dislikes_exp'],
+		'bugs' => $existinginfo['bugs'],
 		'comments' => $existinginfo['comments']);
 
 
