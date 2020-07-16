@@ -7,15 +7,17 @@
 		exit();
 	}
 	$username = $_POST["username"];
-	$num_ratings = $_POST["num_ratings"];
-	$total_ratings = $_POST["total_ratings"];
-	$avg_ratings = $_POST["avg_ratings"];
-	$likes = $_POST["likes"];
-	$dislikes = $_POST["dislikes"];
-	$dislikes_exp = $_POST["dislikes_exp"];
-	$bugs = $_POST["bugs"];
-	$avg_ratings = $_POST["comments"];
-
+	$string = $_POST["ratings"];
+	$json = array(
+		'num_ratings' => $existinginfo['num_ratings'],
+		'total_rating' => $existinginfo['total_rating'],
+		'avg_rating' => $existinginfo['avg_rating'],
+		'likes' => $existinginfo['likes'], 
+		'dislikes' => $existinginfo['dislikes'],
+		'dislikes_exp' => $existinginfo['dislikes_exp'],
+		'bugs' => $existinginfo['bugs'],
+		'comments' => $existinginfo['comments']);
+	$json = json_decode($string);
 	$namecheckquery = "SELECT username FROM ratings WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query failed");
 	if(mysqli_num_rows($namecheck != 1))
@@ -23,7 +25,7 @@
 		echo "5: Either no user with name or more than one user with name";
 		exit();
 	}
-	$updatequery = "UPDATE players SET num_ratings = " . $num_ratings ." , total_rating = " . $total_rating ." , avg_rating = " . $avg_ratings ." , likes = '" . $likes ."', dislikes = '" . $dislikes ."', dislikes_exp = '" . $dislikes_exp ."', bugs = '" . $bugs ."', comments = '" . $comments ."' WHERE username = '" . $username ."';";
+	$updatequery = "UPDATE players SET num_ratings = " . $json[0] ." , total_rating = " . $json[1] ." , avg_rating = " . $json[2] ." , likes = '" . $json[3] ."', dislikes = '" . $json[4] ."', dislikes_exp = '" . $json[5] ."', bugs = '" . $json[6] ."', comments = '" . $json[7] ."' WHERE username = '" . $json[8] ."';";
 	mysqli_query($con, $updatequery) or die(mysqli_error($con));
 	echo "0";
 ?>
