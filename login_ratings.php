@@ -10,7 +10,7 @@
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 
-	$namecheckquery = "SELECT username, hash, salt, num_ratings, total_rating, avg_rating, likes, dislikes, dislikes _exp, bugs, comments FROM ratings WHERE username = '" .  $username . "'; ";
+	$namecheckquery = "SELECT username, hash, salt, num_ratings, total_rating, avg_rating, likes, dislikes, dislikes_exp, bugs, comments FROM ratings WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die(mysqli_error($con));//error code 2 namecheck failed
 	if(mysqli_num_rows($namecheck != 1))
 	{

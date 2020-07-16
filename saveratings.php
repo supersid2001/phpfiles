@@ -25,7 +25,7 @@
 		echo "5: Either no user with name or more than one user with name";
 		exit();
 	}
-	$updatequery = "UPDATE ratings SET num_ratings = " . $json['num_ratings'] ." , total_rating = " . $json['total_rating'] ." , avg_rating = " . $json['avg_rating'] ." , likes = '" . $json['likes'] ."', dislikes = '" . $json['dislikes'] ."', dislikes _exp = '" . $json['dislikes_exp'] ."', bugs = '" . $json['bugs'] ."', comments = '" . $json['comments'] ."' WHERE username = '" . $username ."';";
+	$updatequery = "UPDATE ratings SET num_ratings = " . $json['num_ratings'] ." , total_rating = " . $json['total_rating'] ." , avg_rating = " . $json['avg_rating'] ." , likes = '" . $json['likes'] ."', dislikes = '" . $json['dislikes'] ."', dislikes_exp = '" . $json['dislikes_exp'] ."', bugs = '" . $json['bugs'] ."', comments = '" . $json['comments'] ."' WHERE username = '" . $username ."';";
 	mysqli_query($con, $updatequery) or die(mysqli_error($con));
 	echo "0";
 ?>
