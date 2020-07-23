@@ -16,7 +16,8 @@
 		'dislikes' => "",
 		'dislikes_exp' => "",
 		'bugs' => "",
-		'comments' => "");
+		'comments' => ""
+		'recommneded' => 0);
 	$json = json_decode($string, true) or die(mysqli_error($con));
 	$namecheckquery = "SELECT username FROM ratings WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query failed");
@@ -25,7 +26,7 @@
 		echo "5: Either no user with name or more than one user with name";
 		exit();
 	}
-	$updatequery = "UPDATE ratings SET num_ratings = " . $json['num_ratings'] ." , total_rating = " . $json['total_rating'] ." , avg_rating = " . $json['avg_rating'] ." , likes = '" . $json['likes'] ."', dislikes = '" . $json['dislikes'] ."', dislikes_exp = '" . $json['dislikes_exp'] ."', bugs = '" . $json['bugs'] ."', comments = '" . $json['comments'] ."' WHERE username = '" . $username ."';";
+	$updatequery = "UPDATE ratings SET num_ratings = " . $json['num_ratings'] ." , total_rating = " . $json['total_rating'] ." , avg_rating = " . $json['avg_rating'] ." , likes = '" . $json['likes'] ."', dislikes = '" . $json['dislikes'] ."', dislikes_exp = '" . $json['dislikes_exp'] ."', bugs = '" . $json['bugs'] ."', comments = '" . $json['comments'] ."', Recommend = '" . $json['recommneded'] ."' WHERE username = '" . $username ."';";
 	mysqli_query($con, $updatequery) or die(mysqli_error($con));
 	echo "0";
 ?>
