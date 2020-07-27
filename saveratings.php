@@ -16,7 +16,7 @@
 		'dislikes_exp' => "",
 		'bugs' => "",
 		'comments' => "",
-		'recommended' => 0
+		'recommended' => 0,
 		'feedback_type' => 0,
     	'meeting_id' => 0,
     	'version' => "2.9.1");
