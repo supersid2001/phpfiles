@@ -10,7 +10,7 @@
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 
-	$namecheckquery = "SELECT username, salt, hash, num_games, num_wins, num_losses, num_draws, Rating, num_ratings FROM players WHERE username = '" .  $username . "'; ";
+	$namecheckquery = "SELECT id, username, salt, hash, num_games, num_wins, num_losses, num_draws, Rating, num_ratings FROM players WHERE username = '" .  $username . "'; ";
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2 : Namecheck failed");//error code 2 namecheck failed
 	if(mysqli_num_rows($namecheck != 1))
 	{
@@ -30,6 +30,7 @@
 		exit();
 	}
 	$json = array(
+		'id' => $existinginfo['id'],
 		'games' => $existinginfo['num_games'],
 		'wins' => $existinginfo['num_wins'],
 		 'losses' => $existinginfo['num_losses'],
