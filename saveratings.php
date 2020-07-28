@@ -27,6 +27,6 @@
 		$idcheck = mysqli_query($con, $idcheckquery) or die(mysqli_error($con));//error code 2 
 		$meetingid = mysqli_fetch_assoc($idcheck);
 	}
-	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['id'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid ."', '". $json['version'] ."');") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['id'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."');") or die(mysqli_error($con));
 	echo "0";
 ?>
