@@ -23,7 +23,7 @@
 	$meetingid = 0;
 	if($json['meeting_id'] != null)
 	{
-		$idcheckquery = "SELECT id FROM meetings WHERE Meeting_id = '" .  $json['meeting_id'] . "'; ";
+		$idcheckquery = "SELECT id FROM Meetings WHERE Meeting_id = '" .  $json['meeting_id'] . "'; ";
 		$idcheck = mysqli_query($con, $idcheckquery) or die("9 : idcheck failed");//error code 2 
 		$meetingid = mysqli_fetch_assoc($idcheck);
 	}
