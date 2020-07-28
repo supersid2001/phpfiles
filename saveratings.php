@@ -8,7 +8,7 @@
 	}
 	$string = $_POST["ratings"];
 	$json = array(
-		'id' => 0,
+		'id' => null,
 		'rating' => 0,
 		'likes' => "", 
 		'dislikes' => "",
