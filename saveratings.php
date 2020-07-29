@@ -18,7 +18,8 @@
 		'recommended' => 0,
 		'feedback_type' => 0,
     	'meeting_id' => null,
-    	'version' => "2.9.1");
+    	'version' => "2.9.1",
+    	'Platform' => "Windows");
 	$json = json_decode($string, true) or die(mysqli_error($con));
 	$meetingid = 
 	array(
@@ -34,6 +35,6 @@
 	{
 		$meetingid['id'] = 0;
 	}
-	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['username'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."');") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`, `platform`) VALUES ('". $json['username'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."', '". $json['platform'] ."');") or die(mysqli_error($con));
 	echo "0";
 ?>
