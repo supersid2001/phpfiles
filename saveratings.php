@@ -8,7 +8,7 @@
 	}
 	$string = $_POST["ratings"];
 	$json = array(
-		'id' => 0,
+		'username' => null,
 		'rating' => 0,
 		'likes' => "", 
 		'dislikes' => "",
@@ -34,6 +34,6 @@
 	{
 		$meetingid['id'] = 0;
 	}
-	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['id'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."');") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['username'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."');") or die(mysqli_error($con));
 	echo "0";
 ?>
