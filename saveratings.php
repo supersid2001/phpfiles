@@ -20,7 +20,10 @@
     	'meeting_id' => null,
     	'version' => "2.9.1");
 	$json = json_decode($string, true) or die(mysqli_error($con));
-	$meetingid = 0;
+	$meetingid = 
+	array(
+		'id'=> 0
+	);
 	if($json['meeting_id'] != null)
 	{
 		$idcheckquery = "SELECT id FROM Meetings WHERE Meeting_id = '" .  $json['meeting_id'] . "'; ";
@@ -29,7 +32,7 @@
 	}
 	else 
 	{
-		$meetingid = 0;
+		$meetingid['id'] = 0;
 	}
 	mysqli_query($con, "INSERT INTO ratings (`userid`, `rating`, `likes`, `dislikes`, `dislikes_exp`, `bugs`, `comments`, `Recommend`, `feedback_type`, `meeting_id`, `version`) VALUES ('". $json['id'] ."', " . $json['rating'] .", '" .$json['likes'] ."', '" . $json['dislikes'] ."', '". $json['dislikes_exp'] ."', '". $json['bugs'] ."', '". $json['comments'] ."', ". $json['recommended'] .", ". $json['feedback_type'] .", '" . $meetingid['id'] ."', '". $json['version'] ."');") or die(mysqli_error($con));
 	echo "0";
