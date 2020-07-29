@@ -17,7 +17,7 @@
 		'comments' => "",
 		'recommended' => 0,
 		'feedback_type' => 0,
-    	'meeting_id' => null,
+    	'meeting_id' => 0,
     	'version' => "2.9.1",
     	'Platform' => "Windows");
 	$json = json_decode($string, true) or die(mysqli_error($con));
